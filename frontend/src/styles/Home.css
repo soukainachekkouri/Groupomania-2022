@@ -1,0 +1,68 @@
+.Hero {
+    display: flex;
+    flex-direction: row;
+    margin: 3% 62px 0px 0px;
+}
+
+.Hero-text-part {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    width: 50%;
+}
+
+.part-two {
+    margin-top: -20px;
+    color: #f72000;
+}
+
+.image-section {
+    margin: 1% 24px 1% 5%;
+    width: 62%;
+    height: 397px;
+    border-radius: 9%;
+    background-color: black;
+}
+
+.gpm-loging-image {
+    object-fit: contain;
+}
+
+.gpm-hero-image {
+    width: auto;
+    height: auto;
+}
+
+.title-part {
+    text-align: center;
+    margin-top: 6%;
+}
+
+.title-part-title {
+    font-size: 32px;
+    color: linear-gradient(0deg, #009cea 45%, #4632ff);
+}
+
+.title-part-description {
+    margin: 0 342px 0 342px;
+}
+
+.wall-part {
+    display: flex;
+    margin: 8% 10% 0 10%;
+}
+
+.filter-bar-card {
+    cursor: pointer;
+    border: black;
+}
+
+.filter-bar-card:hover {
+    border: black;
+    box-shadow: black;
+}
+
+.filter-bar-button {
+    width: 65%;
+    align-items: center;
+}

@@ -1,0 +1,17 @@
+.Bouton {
+    background-color: #f72000;
+    color: white;
+    border: #f72000;
+    border-radius: 32px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.Bouton-icon-plus {
+    color: white;
+}
+
+.bouton-content {
+    margin: 5% 5px 5% 5px;
+}
