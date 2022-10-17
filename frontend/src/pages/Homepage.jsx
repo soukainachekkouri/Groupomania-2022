@@ -3,8 +3,6 @@ import React from "react";
 import loginImage from "../assets/login-photo.jpg";
 import MyButton from "../components/MyButton";
 import PublicationCard from "../components/PublicationCard";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage = (props) => {
   return (
@@ -21,9 +19,7 @@ const Homepage = (props) => {
             gourmands pour vous accompagner pendant la pause gouter... ? Laissez
             parlez vos envies sur Groupoconnect !{" "}
           </p>
-          <MyButton icon="" title="Partager avec la communauté">
-            <FontAwesomeIcon icon={faPlus} className="reaction-icon-like" />
-          </MyButton>
+          <MyButton icon="" title="Partager avec la communauté"></MyButton>
         </div>
         <div className="image-section">
           <img />
@@ -63,6 +59,17 @@ const Homepage = (props) => {
             <div className="publication-cards">
               <PublicationCard></PublicationCard>
               <PublicationCard></PublicationCard>
+            </div>
+          </div>
+          <div className="post-of-the-day-part">
+            <h3 className="post-of-the-day-part-title">Publication du jour</h3>
+            <div className="post-of-the-day-part-content">
+              <img />
+              <p>
+                Pendant mon voyage dans la Loire, je tenais un journal de toutes
+                mes dépenses avec une description pour me souvenir en même temps
+                de chaque activité !
+              </p>
             </div>
           </div>
         </div>

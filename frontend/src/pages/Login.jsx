@@ -14,17 +14,27 @@ function Login() {
   };
   const loginSubmit = (e) => {
     e.preventDefault();
+    console.log(login);
     fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
-      body: login,
+      body: JSON.stringify({ email: login.email, password: login.password }),
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        return response.json();
+        if (response.ok) {
+          return response.json();
+        } else {
+          document.getElementById("login-message-error").innerText =
+            "Mail ou mot de passe incorrect";
+          throw "Mail ou mot de passe incorrect";
+        }
       })
       .then((data) => {
-        console.log(data);
+        window.localStorage.setItem("token", data.token);
+        window.localStorage.setItem("userId", data.userId);
+        window.open("/");
       })
+
       .catch((error) => {
         console.log(error);
       });
@@ -71,13 +81,14 @@ function Login() {
               placeholder="Password"
             />
           </div>
+          <div id="login-message-error"></div>
           <button type="submit">Connexion</button>
         </form>
-      </div>{" "}
-      <div className="image-section"> </div>{" "}
+      </div>
+      <div className="image-section"> </div>
       <div className="login-image-section">
-        <img src={loginImage} alt="login-image" className="gpm-loging-image" />{" "}
-      </div>{" "}
+        <img src={loginImage} alt="login-image" className="gpm-loging-image" />
+      </div>
     </div>
   );
 }

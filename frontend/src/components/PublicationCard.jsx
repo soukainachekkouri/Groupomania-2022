@@ -26,7 +26,7 @@ function PublicationCard(props) {
       </div>
       <div className="post-details">
         <div className="user-info">
-          <h1>Claire</h1>
+          <h1 className="user-info-name">Claire</h1>
           <p>il y a 3min</p>
         </div>
         <div className="content">

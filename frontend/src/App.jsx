@@ -8,6 +8,7 @@ import Homepage from "./pages/Homepage";
 //import Textholder from "./components/Textholder";
 
 function App() {
+  //ici changer la redirection vers le login si pas de token
   return (
     <HashRouter>
       <div className="container-fluid">

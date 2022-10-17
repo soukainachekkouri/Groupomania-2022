@@ -89,9 +89,6 @@ function SignUp() {
         </form>
       </div>{" "}
       <div className="image-section"> </div>{" "}
-      <div className="login-image-section">
-        <img src={loginImage} alt="login-image" className="gpm-loging-image" />{" "}
-      </div>{" "}
     </div>
   );
 }
