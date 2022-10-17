@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.css";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Homepage from "./pages/Homepage";
+import Header from "./components/Header/Header";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+import Homepage from "./pages/Homepage/Homepage";
 //import Textholder from "./components/Textholder";
 
 function App() {
-  //ici changer la redirection vers le login si pas de token
+  //ici changer la redirection vers le login si pas connecté
   return (
     <HashRouter>
       <div className="container-fluid">

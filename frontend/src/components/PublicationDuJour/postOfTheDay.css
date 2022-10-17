@@ -1,0 +1,24 @@
+.post-of-the-day-part {
+    width: 25%;
+    height: 540px;
+    background-color: #f7f9fa;
+}
+
+.post-of-the-day-part-title {
+    justify-content: center;
+    font-size: 22px;
+    text-align: center;
+    color: #4632ff;
+}
+
+.post-of-the-day-part-content-image {
+    height: 80px;
+    background-image: url("https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg");
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.post-of-the-day-part-description {
+    margin-top: 20%;
+}
