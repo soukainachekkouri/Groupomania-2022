@@ -3,8 +3,6 @@ import React from "react";
 import MyButton from "../../components/MyButton/MyButton";
 import PublicationCard from "../../components/PublicationCard/PublicationCard";
 import PostOfTheDay from "../../components/PublicationDuJour/postOfTheDay";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage = (props) => {
   return (
