@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import Homepage from "./pages/Homepage/Homepage";
+import PublicationPage from "./pages/PublicationPage/publicationPage";
 //import Textholder from "./components/Textholder";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/publication" element={<PublicationPage />} />
         </Routes>
       </div>
     </HashRouter>

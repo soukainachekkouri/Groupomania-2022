@@ -61,7 +61,7 @@ function Login() {
           <div className="form-group">
             <label htmlFor="email">Votre email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               value={login.email}
               onChange={handleChange}
@@ -83,8 +83,8 @@ function Login() {
             />
           </div>
           <div id="login-message-error"></div>
+          <MyButton icon="" title="Je me connecte"></MyButton>
         </form>
-        <MyButton icon="" title="Je me connecte"></MyButton>
       </div>
       <div className="auth-image-section">
         <img

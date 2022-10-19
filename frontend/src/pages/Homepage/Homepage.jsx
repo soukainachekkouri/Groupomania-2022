@@ -49,9 +49,7 @@ const Homepage = (props) => {
                 <h4>Mes publications préférées</h4>
               </div>
               <div className="filter-bar-button">
-                <MyButton icon="" title="Partager une publication">
-                  <i class="fa-solid fa-plus"></i>
-                </MyButton>
+                <MyButton icon="" title="Partager une publication"></MyButton>
               </div>
             </div>
           </div>

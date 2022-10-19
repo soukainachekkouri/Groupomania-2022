@@ -1,15 +1,12 @@
 import "../MyButton/MyButton.css";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function MyButton(props) {
   const title = props.title;
   const icon = props.icon;
   return (
     <div>
-      <button className="Bouton">
-        <FontAwesomeIcon icon={icon} />
-        <h3 className="bouton-content">{title}</h3>
+      <button className="Bouton" type="submit">
+        {title}
       </button>
     </div>
   );

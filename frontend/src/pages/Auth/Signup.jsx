@@ -15,7 +15,7 @@ function SignUp() {
       setSignup({ ...signup, password: e.target.value });
     }
   };
-  const SignupSubmit = (e) => {
+  const signupSubmit = (e) => {
     e.preventDefault();
     console.log(signup);
     fetch("http://localhost:3000/api/auth/signup", {
@@ -40,6 +40,11 @@ function SignUp() {
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
         window.open("/");
+        setSignup({
+          name: "Wattson",
+          email: "wattson@groupomania.com",
+          password: "******",
+        });
       })
 
       .catch((error) => {
@@ -63,7 +68,7 @@ function SignUp() {
             </p>{" "}
           </div>{" "}
         </div>{" "}
-        <form onSubmit={SignupSubmit} className="all-form-group">
+        <form onSubmit={signupSubmit} className="all-form-group">
           <div className="form-group">
             <label htmlFor="name">Votre prénom</label>
             <input
@@ -79,7 +84,7 @@ function SignUp() {
           <div className="form-group">
             <label htmlFor="email">Votre email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               value={signup.email}
               onChange={handleChange}
@@ -100,10 +105,8 @@ function SignUp() {
               placeholder="Password"
             />
           </div>
+          <MyButton title="Créer mon compte"></MyButton>
         </form>
-        <MyButton icon="" title="Créer mon compte">
-          <i class="fa-solid fa-plus"></i>
-        </MyButton>
       </div>{" "}
       <div className="auth-image-section">
         <img

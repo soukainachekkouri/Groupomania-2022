@@ -1,10 +1,7 @@
-import "../Homepage/Home.css";
+import "../PublicationPage/publicationPage.css";
 import React from "react";
 import MyButton from "../../components/MyButton/MyButton";
-import PublicationCard from "../../components/PublicationCard/PublicationCard";
-import PostOfTheDay from "../../components/PublicationDuJour/postOfTheDay";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LastPublication from "../../components/lastPublications/lastPost";
 
 const Homepage = (props) => {
   return (
@@ -15,15 +12,45 @@ const Homepage = (props) => {
             <h1>Faites le </h1>
             <h1 className="part-two">premier pas</h1>
           </div>
-          <p>
-            Vous l'attendiez, nous l'avons fait ! Envie de boire un verre après
-            une longue semaine, de trouver des copilotes de sports, des
-            gourmands pour vous accompagner pendant la pause gouter... ? Laissez
-            parlez vos envies sur Groupoconnect !{" "}
-          </p>
+          <p>Vos collègues n'attendent que ça !</p>
         </div>
         <div className="image-section">
           <img />
+        </div>
+      </div>
+      <h2 className="section-title">À vous de jouer</h2>
+      <div className="post-creation-part">
+        <div className="description">
+          <h3 className="description-title">1. Votre description</h3>
+          <input
+            type="text"
+            className="description-input"
+            placeholder="Votre description ici..."
+          ></input>
+        </div>
+        <div className="description">
+          <h3 className="description-title">
+            2. Ajouter un visuel (optionnel)
+          </h3>
+          <input
+            type="image"
+            className="image-input"
+            placeholder="mail@mail.fr"
+          ></input>
+        </div>
+        <MyButton icon="" title="Publier"></MyButton>
+      </div>
+      <div>
+        <h2 className="section-title">
+          Dernières publications de la communauté
+        </h2>
+        <div className="last-publication-card">
+          <LastPublication></LastPublication>
+          <LastPublication></LastPublication>
+          <LastPublication></LastPublication>
+          <LastPublication></LastPublication>
+          <LastPublication></LastPublication>
+          <LastPublication></LastPublication>
         </div>
       </div>
     </div>

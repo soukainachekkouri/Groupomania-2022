@@ -70,19 +70,3 @@
     width: 65%;
     align-items: center;
 }
-
-.post-of-the-day-part {
-    width: 25%;
-    height: 540px;
-    background-color: #f7f9fa;
-}
-
-.post-of-the-day-part-title {
-    justify-content: center;
-    font-size: 22px;
-    text-align: center;
-}
-
-.post-of-the-day-part-content {
-    margin: 0 10px 0 10px;
-}
