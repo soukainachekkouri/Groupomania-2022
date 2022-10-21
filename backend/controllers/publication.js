@@ -1,6 +1,5 @@
-const Post = require("../models/post");
+const Post = require("../models/Post");
 const fs = require("fs");
-const post = require("../models/post");
 
 exports.createPost = (req, res, next) => {
     const posts = JSON.parse(req.body.post);
@@ -9,6 +8,7 @@ exports.createPost = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
       req.file.filename
     }`,
+        date: new Date(),
         likes: 0,
         dislikes: 0,
         usersLiked: [],

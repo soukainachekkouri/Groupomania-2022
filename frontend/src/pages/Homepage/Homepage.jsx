@@ -1,5 +1,6 @@
 import "../Homepage/Home.css";
-import React from "react";
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
 import PublicationCard from "../../components/PublicationCard/PublicationCard";
 import PostOfTheDay from "../../components/PublicationDuJour/postOfTheDay";
@@ -19,7 +20,7 @@ const Homepage = (props) => {
             gourmands pour vous accompagner pendant la pause gouter... ? Laissez
             parlez vos envies sur Groupoconnect !{" "}
           </p>
-          <MyButton icon="" title="Partager avec la communauté"></MyButton>
+          <Link to="/publication">Partager une astuce</Link>
         </div>
         <div className="image-section">
           <img />
