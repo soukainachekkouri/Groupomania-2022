@@ -15,6 +15,13 @@ function PublicationCard(props) {
         dépenses avec une description pour me souvenir en même temps de chaque
         activité !
       </p>
+      <div className="post-of-the-day-reaction">
+        <img src={avatar} alt="My-avatar" className="publication-avatar" />
+        <div className="like-and-comment">
+          <FontAwesomeIcon icon={faHeart} className="reaction-icon-like" />
+          <p>0</p>
+        </div>
+      </div>
     </div>
   );
 }

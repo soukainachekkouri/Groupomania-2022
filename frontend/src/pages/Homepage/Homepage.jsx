@@ -1,9 +1,12 @@
 import "../Homepage/Home.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import MyButton from "../../components/MyButton/MyButton";
 import PublicationCard from "../../components/PublicationCard/PublicationCard";
 import PostOfTheDay from "../../components/PublicationDuJour/postOfTheDay";
+import { faBolt } from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage = (props) => {
   return (
@@ -20,7 +23,9 @@ const Homepage = (props) => {
             gourmands pour vous accompagner pendant la pause gouter... ? Laissez
             parlez vos envies sur Groupoconnect !{" "}
           </p>
-          <Link to="/publication">Partager une astuce</Link>
+          <Link to="/publication" className="share-post-button">
+            Partager une astuce
+          </Link>
         </div>
         <div className="image-section">
           <img />
@@ -38,19 +43,32 @@ const Homepage = (props) => {
         </div>
         <div className="wall-part">
           <div className="filter-bar">
-            <h3>Filtrer par :</h3>
+            <h3 className="filter-bar-name">Filtrer par :</h3>
             <div className="filter-bar-cards">
               <div className="filter-bar-card">
-                <h4>Récents</h4>
+                <div className="clock-icon">
+                  <FontAwesomeIcon icon={faClock} />
+                </div>
+                <h4 className="filter-bar-category-name">Récents</h4>
               </div>
               <div className="filter-bar-card">
-                <h4>Populaires</h4>
+                <div className="bolt-icon">
+                  <FontAwesomeIcon icon={faBolt} />
+                </div>
+                <h4 className="filter-bar-category-name">Populaires</h4>
               </div>
               <div className="filter-bar-card">
-                <h4>Mes publications préférées</h4>
+                <div className="heart-icon">
+                  <FontAwesomeIcon icon={faHeart} />
+                </div>
+                <h4 className="filter-bar-category-name">
+                  Mes publications préférées
+                </h4>
               </div>
               <div className="filter-bar-button">
-                <MyButton icon="" title="Partager une publication"></MyButton>
+                <Link to="/publication" className="share-post-button">
+                  Partager une astuce
+                </Link>
               </div>
             </div>
           </div>
