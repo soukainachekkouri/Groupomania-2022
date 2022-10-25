@@ -95,7 +95,7 @@ const PublicationPage = (props) => {
         <MyButton icon="" title="Publier"></MyButton>
       </form>
       <div>
-        <h2 className="section-title">
+        <h2 className="section-title-long">
           Dernières publications de la communauté
         </h2>
         <div className="last-publication-card">
