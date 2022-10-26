@@ -8,6 +8,7 @@ const post = require("./models/Post");
 
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/publications");
+const profileRoutes = require("./routes/profile");
 
 mongoose
     .connect(
@@ -34,5 +35,6 @@ app.use((req, res, next) => {
 
 app.use("/api/auth", userRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/profile", profileRoutes);
 
 module.exports = app;
