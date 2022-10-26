@@ -1,4 +1,3 @@
-const e = require("express");
 const multer = require("multer");
 const MIME_TYPES = {
     "image/jpg": "jpg",
@@ -13,9 +12,9 @@ const storage = multer.diskStorage({
     filename: (req, file, callback) => {
         const name = file.originalname.split(" ").join("_");
         const extension = MIME_TYPES[file.mimetype];
-        const finalName = Date.now() + "." + extension;
+        const finalName = name + Date.now() + "." + extension;
         callback(null, finalName);
     },
 });
 
-module.exports = multer({ storage }).single("image");
+module.exports = multer({ storage }).any("image");

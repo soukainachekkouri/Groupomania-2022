@@ -2,17 +2,23 @@ const Post = require("../models/Post");
 const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
-    const posts = JSON.parse(req.body.post);
+    let posts = {
+        message: req.body.description,
+        userId: req.body.userId,
+    };
+    let imageFile = req.files ? req.files[0] : undefined;
+    if (imageFile) {
+        posts.imageUrl = `${req.protocol}://${req.get("host")}/images/${
+      imageFile.filename
+    }`;
+    }
     const newPost = new Post({
         ...posts,
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
-      req.file.filename
-    }`,
-        date: new Date(),
-        likes: 0,
-        dislikes: 0,
-        usersLiked: [],
-        usersDisliked: [],
+        datePost: new Date(),
+        /*likes: 0,
+                dislikes: 0,
+                //usersLiked: [],
+                usersDisliked: [],*/
     });
     newPost
         .save()

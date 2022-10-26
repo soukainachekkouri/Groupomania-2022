@@ -37,10 +37,10 @@ const PublicationPage = (props) => {
     fetch("http://localhost:3000/api/post/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.getItem("token"),
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        Accept: "*/*",
       },
-      body: JSON.stringify(formData),
+      body: formData,
     })
       .then((response) => {
         return response.json();
