@@ -19,9 +19,9 @@ const PublicationPage = (props) => {
     e.preventDefault();
     //1.controler l'extention du fichier (on veut juste une image)
     //form date qu'on renvoie et non pas un json
-    let formData = new FormData();
+    const types = ["png", "jpeg", "jpg"];
+
     if (state.image !== null) {
-      const types = ["png", "jpeg", "jpg"];
       const fileName = state.image.name;
       const fileExtention = fileName.split(".").pop();
       if (!types.includes(fileExtention.toLowerCase())) {
@@ -29,15 +29,17 @@ const PublicationPage = (props) => {
         alert("Format non pris en charge");
         return;
       }
-      formData.append("imageUrl", state.image);
     }
+    let formData = new FormData();
+    formData.append("imageUrl", state.image);
     formData.append("description", state.description);
     formData.append("userId", window.localStorage.getItem("userId"));
+    const token = window.localStorage.getItem("token");
     //2. j'envoie les infos au back
     fetch("http://localhost:3000/api/post/", {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        Authorization: "Bearer " + token,
         Accept: "*/*",
       },
       body: formData,
