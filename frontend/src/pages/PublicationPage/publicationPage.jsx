@@ -88,9 +88,6 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
-          window.localStorage.setItem("token", data.token);
-          window.localStorage.setItem("userId", data.userId);
-          window.open("/");
         })
 
         .catch((e) => {
@@ -112,6 +109,9 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
+          window.localStorage.setItem("token", data.token);
+          window.localStorage.setItem("userId", data.userId);
+          window.open("/");
         })
 
         .catch((e) => {
@@ -133,10 +133,7 @@ const PublicationPage = (props) => {
           <p>Vos collègues n'attendent que ça !</p>
         </div>
         <div className="image-section-publication-page">
-          <img
-            alt="publier-un-post"
-            className="image-section-publication-page-image"
-          />
+          <img />
         </div>
       </div>
       <h2 className="section-title">À vous de jouer</h2>
