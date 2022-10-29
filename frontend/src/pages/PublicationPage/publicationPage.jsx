@@ -1,19 +1,56 @@
 import "../PublicationPage/publicationPage.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
 import LastPublication from "../../components/lastPublications/lastPost";
+import { useParams } from "react-router";
 
 const PublicationPage = (props) => {
-  const [state, setState] = useState({ description: "", image: null });
+  const [state, setState] = useState({
+    message: "",
+    image: null,
+    imageUrl: "",
+  });
+  const [save, isSave] = useState(true);
+  const token = window.localStorage.getItem("token");
+
   //je créer la fonction handlechange pour la description
   const handleChange = (e) => {
-    if (e.target.id === "description") {
+    if (e.target.id === "message") {
       //je récupère l'ancienne valeur dans le state avant de récupérer ce que user vient de saisir
-      setState({ ...state, description: e.target.value });
+      setState({ ...state, message: e.target.value });
     } else if (e.target.id === "image") {
       setState({ ...state, image: e.target.files[0] });
     }
   };
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      isSave(false);
+      fetch("http://localhost:3000/api/post/" + params.id, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+
+        .then((data) => {
+          setState({
+            message: data.message,
+            image: null,
+            imageUrl: data.imageUrl,
+          });
+        })
+
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  }, []);
+
   const handleSubmit = (e) => {
     //empêcher la soumition du form
     e.preventDefault();
@@ -32,30 +69,59 @@ const PublicationPage = (props) => {
     }
     let formData = new FormData();
     formData.append("imageUrl", state.image);
-    formData.append("description", state.description);
-    formData.append("userId", window.localStorage.getItem("userId"));
+    formData.append("description", state.message);
+
     const token = window.localStorage.getItem("token");
-    //2. j'envoie les infos au back
-    fetch("http://localhost:3000/api/post/", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-        Accept: "*/*",
-      },
-      body: formData,
-    })
-      .then((response) => {
-        return response.json();
+    if (save) {
+      formData.append("userId", window.localStorage.getItem("userId"));
+      fetch("http://localhost:3000/api/post/", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "*/*",
+        },
+        body: formData,
       })
+        .then((response) => {
+          return response.json();
+        })
 
-      .then((data) => {
-        console.log(data);
+        .then((data) => {
+          console.log(data);
+          window.localStorage.setItem("token", data.token);
+          window.localStorage.setItem("userId", data.userId);
+          window.open("/");
+        })
+
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      formData.append("userId", state.userId);
+      fetch("http://localhost:3000/api/post/" + params.id, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "*/*",
+        },
+        body: formData,
       })
+        .then((response) => {
+          return response.json();
+        })
 
-      .catch((e) => {
-        console.log(e);
-      });
+        .then((data) => {
+          console.log(data);
+        })
+
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+
+    //2. j'envoie les infos au back}
   };
+
   return (
     <div>
       <div className="Hero">
@@ -66,8 +132,11 @@ const PublicationPage = (props) => {
           </div>
           <p>Vos collègues n'attendent que ça !</p>
         </div>
-        <div className="image-section">
-          <img />
+        <div className="image-section-publication-page">
+          <img
+            alt="publier-un-post"
+            className="image-section-publication-page-image"
+          />
         </div>
       </div>
       <h2 className="section-title">À vous de jouer</h2>
@@ -78,9 +147,9 @@ const PublicationPage = (props) => {
             type="text"
             className="description-input"
             placeholder="Votre description ici..."
-            id="description"
+            id="message"
             onChange={handleChange}
-            value={state.description}
+            value={state.message}
           ></input>
         </div>
         <div className="description">
@@ -93,6 +162,7 @@ const PublicationPage = (props) => {
             id="image"
             onChange={handleChange}
           ></input>
+          {save ? "" : <img src={state.imageUrl} alt="mon-image" />}
         </div>
         <MyButton icon="" title="Publier"></MyButton>
       </form>

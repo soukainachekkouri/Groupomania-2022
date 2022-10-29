@@ -15,10 +15,10 @@ exports.createPost = (req, res, next) => {
     const newPost = new Post({
         ...posts,
         datePost: new Date(),
-        /*likes: 0,
-                dislikes: 0,
-                //usersLiked: [],
-                usersDisliked: [],*/
+        likes: 0,
+        dislikes: 0,
+        usersLiked: [],
+        usersDisliked: [],
     });
     newPost
         .save()
@@ -45,28 +45,25 @@ exports.findOnePost = (req, res, next) => {
 };
 
 exports.updateOnePost = (req, res, next) => {
-    const postObject = req.file ?
-        {
-            ...JSON.parse(req.body.post),
-            imageUrl: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
-        } :
-        {...req.body };
-
-    Post.findOne({ _id: req.params.id })
-        .then((post) => {
-            if (post.userId._id.toString() !== postObject.userId) {
-                res.status(401).json({ message: "Non-autorisé" });
+    let data = {
+        message: req.body.description,
+    };
+    let imageFile = req.files ? req.files[0] : undefined;
+    if (imageFile) {
+        data.imageUrl = `${req.protocol}://${req.get("host")}/images/${
+      imageFile.filename
+    }`;
+    }
+    Post.findByIdAndUpdate(
+        req.params.id, { $set: data }, { new: true },
+        (error, result) => {
+            if (!error) {
+                res.status(200).json(result);
             } else {
-                Post.updateOne({ _id: req.params.id }, {...sauceObject, _id: req.params.id })
-                    .then(() => res.status(200).json({ message: "Objet modifié" }))
-                    .catch((error) => res.status(401).json({ error }));
+                res.status(500).json(error);
             }
-        })
-        .catch((error) => {
-            res.status(400).json({ error });
-        });
+        }
+    );
 };
 
 exports.deleteOnePost = (req, res, next) => {

@@ -1,3 +1,13 @@
+.image-section-publication-page {
+    background-image: url("https://thepressfree.com/wp-content/uploads/2021/09/Definition-du-reseau.jpg");
+    margin: 1% 24px 1% 5%;
+    width: 62%;
+    height: 397px;
+    border-radius: 9%;
+}
+
+.image-section-publication-page-image {}
+
 .post-creation-part {
     align-content: center;
     margin-left: auto;

@@ -1,8 +1,9 @@
 .post-of-the-day-part {
-    width: 30%;
-    height: 360px;
+    width: 270px;
+    height: 400px;
     background-color: #f7f9fa;
     border-radius: 8px;
+    margin-left: 14%;
 }
 
 .post-of-the-day-part-title {
@@ -13,11 +14,12 @@
 }
 
 .post-of-the-day-part-content-image {
-    height: 90px;
-    background-image: url("https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg");
+    height: 120px;
+    background-image: url("https://photos.tf1info.fr/images/1280/720/halloween-unsplash-citrouille-16c5eb-0@1x.jpeg");
     border-radius: 10px;
     margin-left: 6%;
     margin-right: 6%;
+    object-fit: fill;
 }
 
 .post-of-the-day-part-description {
@@ -28,4 +30,11 @@
 
 .post-of-the-day-reaction {
     display: flex;
+}
+
+.publication-of-the-day-avatar {
+    width: 39px;
+    height: 39px;
+    margin-left: 10px;
+    margin-right: 13px;
 }

@@ -6,6 +6,7 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import Homepage from "./pages/Homepage/Homepage";
 import PublicationPage from "./pages/PublicationPage/publicationPage";
+import ProfilePage from "./pages/ProfilePage/profilePage";
 //import Textholder from "./components/Textholder";
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/publication" element={<PublicationPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/publication/:id" element={<PublicationPage />} />
         </Routes>
       </div>
     </HashRouter>

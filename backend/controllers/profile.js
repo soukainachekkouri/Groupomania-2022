@@ -1,11 +1,12 @@
-const User = require("../models/Profile");
+const User = require("../models/User");
 
 exports.profile = (req, res) => {
-    User.findOne({ email: req.body.email }).then((user) => {
+    User.findOne({ _id: req.params.userId }).then((user) => {
         if (user == null) {
             res.status(404).json({ message: "Something went wrong" });
         } else {
-            (user.name = req.body.name), (user.email = req.body.email);
+            console.log(user);
+            res.status(200).json(user);
         }
     });
 };

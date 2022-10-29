@@ -1,14 +1,26 @@
-import "../Homepage/Home.css";
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import "../../pages/Homepage/Home.css";
+import React, { useEffect, useState } from "react";
+import loginImage from "../Auth/assets/login-photo.jpg";
+import MyButton from "../../components/MyButton/MyButton";
 import PublicationCard from "../../components/PublicationCard/PublicationCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import PostOfTheDay from "../../components/PublicationDuJour/postOfTheDay";
 import { faBolt } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Homepage = (props) => {
+const Homepage = () => {
+  const [data, setPosts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/api/post/")
+      .then((response) => response.json())
+      .then((datas) => {
+        setPosts(...data, datas);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div>
       <div className="Hero">
@@ -24,7 +36,7 @@ const Homepage = (props) => {
             parlez vos envies sur Groupoconnect !{" "}
           </p>
           <Link to="/publication" className="share-post-button">
-            Partager une astuce
+            Partager une publication
           </Link>
         </div>
         <div className="image-section">
@@ -43,39 +55,38 @@ const Homepage = (props) => {
         </div>
         <div className="wall-part">
           <div className="filter-bar">
-            <h3 className="filter-bar-name">Filtrer par :</h3>
+            <h3>Filtrer par :</h3>
             <div className="filter-bar-cards">
-              <div className="filter-bar-card">
+              <div className="filter-bar-card-new-post">
                 <div className="clock-icon">
                   <FontAwesomeIcon icon={faClock} />
                 </div>
-                <h4 className="filter-bar-category-name">Récents</h4>
+                <h4>Récents</h4>
               </div>
               <div className="filter-bar-card">
                 <div className="bolt-icon">
                   <FontAwesomeIcon icon={faBolt} />
                 </div>
-                <h4 className="filter-bar-category-name">Populaires</h4>
+                <h4>Populaires</h4>
               </div>
               <div className="filter-bar-card">
                 <div className="heart-icon">
                   <FontAwesomeIcon icon={faHeart} />
                 </div>
-                <h4 className="filter-bar-category-name">
-                  Mes publications préférées
-                </h4>
+                <h4>Mes publications préférées</h4>
               </div>
               <div className="filter-bar-button">
                 <Link to="/publication" className="share-post-button">
-                  Partager une astuce
+                  Partager une publication
                 </Link>
               </div>
             </div>
           </div>
           <div className="publications-section">
             <div className="publication-cards">
-              <PublicationCard></PublicationCard>
-              <PublicationCard></PublicationCard>
+              {data.map((element) => (
+                <PublicationCard key={element._id} post={element} />
+              ))}
             </div>
           </div>
           <PostOfTheDay></PostOfTheDay>

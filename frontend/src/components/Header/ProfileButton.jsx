@@ -1,5 +1,7 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "../Header/ProfileButton.css";
 import avatar from "../Header/assets/avatar.png";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -22,10 +24,10 @@ const ProfileButton = () => {
       {open ? (
         <ul className="menu">
           <li className="menu-item">
-            <button>
+            <Link to="/profile">
               <FontAwesomeIcon icon={faUser} />
               Mon profil
-            </button>
+            </Link>
           </li>
           <li className="menu-item">
             <button>

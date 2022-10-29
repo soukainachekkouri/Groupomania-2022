@@ -1,8 +1,10 @@
 .publication-card {
-    width: 65%;
-    margin-left: 10%;
+    width: 400px;
+    margin-left: 24%;
     display: flex;
     margin-bottom: 5%;
+    border-radius: 8px;
+    border-bottom: 2px;
 }
 
 .first-section {
@@ -47,8 +49,8 @@
 
 .post-image {
     height: 213px;
-    background-image: url("https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg");
     border-radius: 10px;
+    width: 300px;
 }
 
 .comment-button {

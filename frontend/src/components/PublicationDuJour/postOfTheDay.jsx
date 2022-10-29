@@ -11,12 +11,16 @@ function PublicationCard(props) {
       <h3 className="post-of-the-day-part-title">Publication du jour</h3>
       <div className="post-of-the-day-part-content-image"></div>
       <p className="post-of-the-day-part-description">
-        Pendant mon voyage dans la Loire, je tenais un journal de toutes mes
-        dépenses avec une description pour me souvenir en même temps de chaque
-        activité !
+        SAVE DE DATE !! Nous vous attendons tous jeudi 27 septembre, pour une
+        soirée d'Halloween d'exception. Dégainez vos meilleures costumes, vous
+        serez peut-être récompensé..{" "}
       </p>
       <div className="post-of-the-day-reaction">
-        <img src={avatar} alt="My-avatar" className="publication-avatar" />
+        <img
+          src={avatar}
+          alt="My-avatar"
+          className="publication-of-the-day-avatar"
+        />
         <div className="like-and-comment">
           <FontAwesomeIcon icon={faHeart} className="reaction-icon-like" />
           <p>0</p>
