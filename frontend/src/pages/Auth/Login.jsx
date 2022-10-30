@@ -33,6 +33,7 @@ function Login() {
       .then((data) => {
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
+        window.localStorage.setItem("isAdmin", data.isAdmin);
         window.open("/");
       })
 

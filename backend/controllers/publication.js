@@ -47,6 +47,7 @@ exports.findOnePost = (req, res, next) => {
 exports.updateOnePost = (req, res, next) => {
     let data = {
         message: req.body.description,
+        userId: req.body.userId,
     };
     let imageFile = req.files ? req.files[0] : undefined;
     if (imageFile) {
@@ -67,17 +68,27 @@ exports.updateOnePost = (req, res, next) => {
 };
 
 exports.deleteOnePost = (req, res, next) => {
+    console.log(req.params.id);
     Post.findOne({ _id: req.params.id })
         .then((post) => {
             //je récupère le nom de l'image
-            const fileName = post.imageUrl.split("/images/")[1];
-            fs.unlink(`images/${fileName}`, () => {
+            if (post.imageUrl) {
+                const fileName = post.imageUrl.split("/images/")[1];
+                fs.unlink(`images/${fileName}`, () => {
+                    Post.deleteOne({ _id: req.params.id })
+                        .then(() => res.status(200).json({ message: "objet supprimé!" }))
+                        .catch((error) => res.status(400).json({ error }));
+                });
+            } else {
                 Post.deleteOne({ _id: req.params.id })
                     .then(() => res.status(200).json({ message: "objet supprimé!" }))
                     .catch((error) => res.status(400).json({ error }));
-            });
+            }
         })
-        .catch((error) => res.status(500).json({ error }));
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json({ error });
+        });
     //il faut supprimer les images en même temps
 };
 

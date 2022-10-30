@@ -16,10 +16,15 @@ const Homepage = () => {
     fetch("http://localhost:3000/api/post/")
       .then((response) => response.json())
       .then((datas) => {
+        console.log(datas);
         setPosts(...data, datas);
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const handleDelete = (post) => {
+    setPosts(data.filter((element) => element._id !== post._id));
+  };
 
   return (
     <div>
@@ -85,7 +90,11 @@ const Homepage = () => {
           <div className="publications-section">
             <div className="publication-cards">
               {data.map((element) => (
-                <PublicationCard key={element._id} post={element} />
+                <PublicationCard
+                  key={element._id}
+                  post={element}
+                  handleDelete={handleDelete}
+                />
               ))}
             </div>
           </div>
