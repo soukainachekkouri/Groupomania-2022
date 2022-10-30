@@ -34,6 +34,7 @@ function PublicationCard(props) {
 
   const proprio = post.userId === userId;
   const testAdmin = proprio || isAdmin;
+  console.log(testAdmin);
   const deleted =
     proprio || isAdmin ? (
       <button onClick={() => deletePost()}>Supprimer</button>
