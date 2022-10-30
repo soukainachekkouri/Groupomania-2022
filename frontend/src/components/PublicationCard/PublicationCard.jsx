@@ -45,7 +45,7 @@ function PublicationCard(props) {
   };
 
   let deleted = testAdmin && (
-    <button className="delete-button" onClick={() => deletePost}>
+    <button className="delete-button" onClick={() => deletePost()}>
       {" "}
       Supprimer
     </button>
