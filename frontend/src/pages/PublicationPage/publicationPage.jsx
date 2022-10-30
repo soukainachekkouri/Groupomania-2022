@@ -9,6 +9,7 @@ const PublicationPage = (props) => {
     message: "",
     image: null,
     imageUrl: "",
+    userId: "",
   });
   const [save, isSave] = useState(true);
   const token = window.localStorage.getItem("token");
@@ -42,6 +43,7 @@ const PublicationPage = (props) => {
             message: data.message,
             image: null,
             imageUrl: data.imageUrl,
+            userId: data.userId,
           });
         })
 
@@ -88,6 +90,9 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
+          window.localStorage.setItem("token", data.token);
+          window.localStorage.setItem("userId", data.userId);
+          window.open("/");
         })
 
         .catch((e) => {
@@ -120,6 +125,19 @@ const PublicationPage = (props) => {
     }
 
     //2. j'envoie les infos au back}
+  };
+
+  const DeletePost = (e) => {
+    e.preventDefault();
+    useEffect(() => {
+      fetch("http://localhost:3000/api/post/:id", {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+          Accept: "*/*",
+        },
+      }).then(() => setState("Delete successful"));
+    }, []);
   };
 
   return (
@@ -162,6 +180,7 @@ const PublicationPage = (props) => {
           {save ? "" : <img src={state.imageUrl} alt="mon-image" />}
         </div>
         <MyButton icon="" title="Publier"></MyButton>
+        <MyButton icon="" title="Delete" onSubmit={DeletePost}></MyButton>
       </form>
       <div>
         <h2 className="section-title-long">

@@ -16,7 +16,6 @@ function PublicationCard(props) {
     )
       .then((response) => response.json())
       .then((datas) => {
-        console.log(datas);
         setUser(datas);
       })
       .catch((error) => console.log(error));
@@ -30,6 +29,16 @@ function PublicationCard(props) {
     post.userId === window.localStorage.getItem("userId")
       ? `/publication/${post._id}`
       : "";
+
+  const like = document.getElementById("like-and-comment");
+  const compteurLike = document.getElementById("compteur-clic");
+  if (like) {
+    like.onclick = function () {
+      compteurLike += 1;
+      document.getElementById(compteurLike);
+      return false;
+    };
+  }
   return (
     <Link to={lien}>
       <div className="publication-card">
@@ -38,15 +47,15 @@ function PublicationCard(props) {
             <img src={avatar} alt="My-avatar" className="publication-avatar" />
             <div className="like-and-comment">
               <FontAwesomeIcon icon={faHeart} className="reaction-icon-like" />
-              <p>0</p>
+              <p className="compteur-clic">0</p>
             </div>
-            <div className="like-and-comment">
+            <button className="like-and-comment" onClick={compteurLike}>
               <FontAwesomeIcon
                 icon={faCommentDots}
                 className="reaction-icon-comment"
               />
-              <p>0</p>
-            </div>
+              <p>{like}</p>
+            </button>
           </div>
         </div>
         <div className="post-details">
