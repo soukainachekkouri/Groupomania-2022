@@ -26,21 +26,10 @@ function PublicationCard(props) {
     "https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg";
 
   const image = post.imageUrl;
-  const lien =
-    post.userId === window.localStorage.getItem("userId") ||
-    window.localStorage.getItem("isAdmin")
-      ? `/publication/${post._id}`
-      : "";
-
   const proprio = post.userId === userId;
-  const testAdmin = proprio || isAdmin;
-  console.log(testAdmin);
-  const deleted =
-    proprio || isAdmin ? (
-      <button onClick={() => deletePost()}>Supprimer</button>
-    ) : (
-      ""
-    );
+  const testAdmin = proprio ? true : isAdmin;
+
+  const lien = testAdmin && `/publication/${post.id}`;
 
   const token = window.localStorage.getItem("token");
   const deletePost = () => {
@@ -55,6 +44,13 @@ function PublicationCard(props) {
       .catch((error) => console.log(error));
   };
 
+  let deleted = testAdmin && (
+    <button className="delete-button" onClick={() => deletePost}>
+      {" "}
+      Supprimer
+    </button>
+  );
+
   /*const like = document.getElementById("like-and-comment");
   const compteurLike = document.getElementById("compteur-clic");
   if (like) {
@@ -67,7 +63,7 @@ function PublicationCard(props) {
   }*/
   return (
     <>
-      <Link to={lien}>
+      <Link className="link-design" to={lien}>
         <div className="publication-card">
           <div className="first-section">
             <div className="reaction">

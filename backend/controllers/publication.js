@@ -28,6 +28,7 @@ exports.createPost = (req, res, next) => {
 
 exports.findPosts = (req, res, next) => {
     Post.find()
+        .sort({ datePost: -1 })
         .then(function(posts) {
             res.status(200).json(posts);
         })

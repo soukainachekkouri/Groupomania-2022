@@ -162,7 +162,15 @@ const PublicationPage = (props) => {
             id="image"
             onChange={handleChange}
           ></input>
-          {save ? "" : <img src={state.imageUrl} alt="mon-image" />}
+          {save ? (
+            ""
+          ) : (
+            <img
+              src={state.imageUrl}
+              alt="mon-image"
+              className="image-input-part"
+            />
+          )}
         </div>
         <MyButton icon="" title="Publier"></MyButton>
       </form>

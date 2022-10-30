@@ -1,3 +1,7 @@
+.link-design {
+    text-decoration: none;
+}
+
 .publication-card {
     width: 400px;
     margin-left: 24%;
@@ -10,6 +14,7 @@
 .first-section {
     display: flex;
     margin-right: 6%;
+    text-decoration: none;
 }
 
 .reaction {}
@@ -57,14 +62,22 @@
     justify-content: space-between;
 }
 
-.mon-commentaire {
-    background-color: #f7f9fa;
-    border-color: #f7f9fa;
-    width: 60%;
+.user-info-name {
+    color: red;
+    text-decoration-line: underline;
+    -moz-text-decoration-color: white;
 }
 
-.envoyer-mon-commentaire {
-    border-radius: 20px;
-    background: #b7cbd3;
-    border-color: #b7cbd3;
+.delete-button {
+    background-color: #f72000;
+    color: white;
+    border: #f72000;
+    border-radius: 32px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 275px;
+    margin-bottom: 20px;
 }
