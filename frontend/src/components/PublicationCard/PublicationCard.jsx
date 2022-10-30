@@ -1,29 +1,20 @@
 import "../PublicationCard/Publicationcard.css";
 import avatar from "../Header/assets/avatar.png";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {faCommentDots} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import MyButton from "../MyButton/MyButton";
 
 function PublicationCard(props) {
-  const [user, setUser] = useState(null);
-  const { post, handleDelete } = props;
-  const userId = window.localStorage.getItem("userId");
-  const isAdmin = window.localStorage.getItem("isAdmin");
+    const [user, setUser] = useState(null);
+    const {post, handleDelete} = props;
+    const userId = window.localStorage.getItem("userId");
+    const isAdmin = JSON.parse(window.localStorage.getItem("isAdmin"));
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/profile/" + post.userId)
-      .then((response) => response.json())
-      .then((datas) => {
-        setUser(datas);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
-  const defaultImage =
-    "https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg";
+    useEffect(() => {
 
   const image = post.imageUrl;
   const proprio = post.userId === userId;
@@ -31,18 +22,8 @@ function PublicationCard(props) {
 
   const lien = testAdmin && `/publication/${post.id}`;
 
-  const token = window.localStorage.getItem("token");
-  const deletePost = () => {
-    console.log(post._id);
-    fetch("http://localhost:3000/api/post/" + post._id, {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then((result) => handleDelete(post))
-      .catch((error) => console.log(error));
-  };
+    const defaultImage =
+        "https://eatcetera.co/wp-content/uploads/2019/09/croissants_frais.jpg";
 
   let deleted = testAdmin && (
     <button className="delete-button" onClick={() => deletePost()}>
