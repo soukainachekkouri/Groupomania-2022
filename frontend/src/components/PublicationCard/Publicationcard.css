@@ -1,5 +1,6 @@
-.link-design {
+.publication-card-link {
     text-decoration: none;
+    font-size: 40px;
 }
 
 .publication-card {
@@ -62,12 +63,6 @@
     justify-content: space-between;
 }
 
-.user-info-name {
-    color: red;
-    text-decoration-line: underline;
-    -moz-text-decoration-color: white;
-}
-
 .delete-button {
     background-color: #f72000;
     color: white;
@@ -80,4 +75,27 @@
     font-weight: 500;
     margin-left: 275px;
     margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 441px) and (max-device-width: 1024px) {
+    .publication-card {
+        width: 612px;
+    }
+    .post-image {
+        height: 157px;
+        width: 241px;
+    }
+    .delete-button {
+        margin-left: 195px;
+    }
+    .post-of-the-day-part {
+        margin-left: 10%;
+        margin-right: -68px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .publication-card {
+        margin-left: 0;
+    }
 }

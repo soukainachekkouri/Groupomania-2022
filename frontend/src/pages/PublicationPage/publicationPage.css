@@ -35,6 +35,10 @@
     padding: 25px;
 }
 
+.description {
+    display: flex;
+}
+
 .description-title {
     font-size: 14px;
     font-weight: 400;
@@ -68,7 +72,73 @@
     width: 100%;
 }
 
-.image-input-part {
-    width: 200px;
-    height: 20px;
+.publish-button {
+    margin-right: 190px;
+}
+
+@media only screen and (min-width: 441px) and (max-device-width: 1024px) {
+    .title-part-description {
+        margin: 0 84px 0 84px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .Hero {
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+        margin: 3% -7px 0px 0px;
+    }
+    .image-section {
+        margin: 1% 24px 1% 5%;
+        width: 90%;
+        height: 124px;
+        border-radius: 1%;
+    }
+    .Hero-text-part-title {
+        font-size: 18px;
+        width: fit-content;
+    }
+    .part-two-description {
+        width: fit-content;
+    }
+    .title-part-description {
+        margin: 0 42px 0 42px;
+    }
+    .section-title {
+        width: 100%;
+        margin-left: 25%;
+    }
+    .section-title-long {
+        margin-left: 0%;
+    }
+    .description-input {
+        width: 429px;
+        height: 80px;
+        margin-right: 7%;
+    }
+    .post-creation-part {
+        align-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px;
+        width: 70%;
+    }
+    .image-input {
+        width: 235px;
+        height: 40px;
+        margin-right: 7%;
+    }
+    button {
+        margin-left: 15%;
+    }
+    .section-title-long {
+        width: 100%;
+        margin-left: 5%;
+    }
+    .last-publication-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 }

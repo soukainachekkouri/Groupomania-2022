@@ -130,19 +130,24 @@ const PublicationPage = (props) => {
       <div className="Hero">
         <div className="Hero-text-part">
           <div className="Hero-text-part-title">
-            <h1>Faites le </h1>
-            <h1 className="part-two">premier pas</h1>
+            <h1>Vos collègues</h1>
+            <h1 className="part-two">n'attendent que vous</h1>
           </div>
-          <p>Vos collègues n'attendent que ça !</p>
+          <p className="part-two-description">
+            Vous l'attendiez, nous l'avons fait ! Envie de boire un verre après
+            une longue semaine, de trouver des copilotes de sports, des
+            gourmands pour vous accompagner pendant la pause gouter... ? Laissez
+            parlez vos envies sur Groupoconnect !{" "}
+          </p>
         </div>
-        <div className="image-section-publication-page">
+        <div className="image-section">
           <img />
         </div>
       </div>
       <h2 className="section-title">À vous de jouer</h2>
       <form className="post-creation-part" onSubmit={handleSubmit}>
+        <h3 className="description-title">1. Votre description</h3>
         <div className="description">
-          <h3 className="description-title">1. Votre description</h3>
           <input
             type="text"
             className="description-input"
@@ -152,37 +157,35 @@ const PublicationPage = (props) => {
             value={state.message}
           ></input>
         </div>
-        <div className="description">
+        <div>
           <h3 className="description-title">
             2. Ajouter un visuel (optionnel)
           </h3>
-          <input
-            type="file"
-            className="image-input"
-            id="image"
-            onChange={handleChange}
-          ></input>
-          {save ? (
-            ""
-          ) : (
-            <img
-              src={state.imageUrl}
-              alt="mon-image"
-              className="image-input-part"
-            />
-          )}
+          <div className="description-image">
+            <input
+              type="file"
+              className="image-input"
+              id="image"
+              onChange={handleChange}
+            ></input>
+            {save ? (
+              ""
+            ) : (
+              <img
+                src={state.imageUrl}
+                alt="mon-image"
+                className="image-input-part"
+              />
+            )}
+          </div>
         </div>
-        <MyButton icon="" title="Publier"></MyButton>
+        <MyButton className="publish-button" icon="" title="Publier"></MyButton>
       </form>
       <div>
         <h2 className="section-title-long">
           Dernières publications de la communauté
         </h2>
         <div className="last-publication-card">
-          <LastPublication></LastPublication>
-          <LastPublication></LastPublication>
-          <LastPublication></LastPublication>
-          <LastPublication></LastPublication>
           <LastPublication></LastPublication>
           <LastPublication></LastPublication>
         </div>

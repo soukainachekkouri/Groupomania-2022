@@ -34,7 +34,7 @@ const Homepage = () => {
             <h1>Un espace communautaire</h1>
             <h1 className="part-two">pensé pour vous</h1>
           </div>
-          <p>
+          <p className="part-two-description">
             Vous l'attendiez, nous l'avons fait ! Envie de boire un verre après
             une longue semaine, de trouver des copilotes de sports, des
             gourmands pour vous accompagner pendant la pause gouter... ? Laissez
@@ -59,43 +59,45 @@ const Homepage = () => {
           </p>
         </div>
         <div className="wall-part">
-          <div className="filter-bar">
-            <h3>Filtrer par :</h3>
-            <div className="filter-bar-cards">
-              <div className="filter-bar-card-new-post">
-                <div className="clock-icon">
-                  <FontAwesomeIcon icon={faClock} />
+          <div className="wall-part-first-part">
+            <div className="filter-bar">
+              <h3>Filtrer par :</h3>
+              <div className="filter-bar-cards">
+                <div className="filter-bar-card-new-post">
+                  <div className="clock-icon">
+                    <FontAwesomeIcon icon={faClock} />
+                  </div>
+                  <h4>Récents</h4>
                 </div>
-                <h4>Récents</h4>
-              </div>
-              <div className="filter-bar-card">
-                <div className="bolt-icon">
-                  <FontAwesomeIcon icon={faBolt} />
+                <div className="filter-bar-card">
+                  <div className="bolt-icon">
+                    <FontAwesomeIcon icon={faBolt} />
+                  </div>
+                  <h4>Populaires</h4>
                 </div>
-                <h4>Populaires</h4>
-              </div>
-              <div className="filter-bar-card">
-                <div className="heart-icon">
-                  <FontAwesomeIcon icon={faHeart} />
+                <div className="filter-bar-card">
+                  <div className="heart-icon">
+                    <FontAwesomeIcon icon={faHeart} />
+                  </div>
+                  <h4>Mes publications préférées</h4>
                 </div>
-                <h4>Mes publications préférées</h4>
-              </div>
-              <div className="filter-bar-button">
-                <Link to="/publication" className="share-post-button">
-                  Partager une publication
-                </Link>
+                <div className="filter-bar-button">
+                  <Link to="/publication" className="share-post-button-fb">
+                    Partager une publication
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="publications-section">
-            <div className="publication-cards">
-              {data.map((element) => (
-                <PublicationCard
-                  key={element._id}
-                  post={element}
-                  handleDelete={handleDelete}
-                />
-              ))}
+            <div className="publications-section">
+              <div className="publication-cards">
+                {data.map((element) => (
+                  <PublicationCard
+                    key={element._id}
+                    post={element}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <PostOfTheDay></PostOfTheDay>

@@ -81,3 +81,16 @@
     background: #b7cbd3;
     border-color: #b7cbd3;
 }
+
+@media only screen and (min-width: 441px) and (max-device-width: 1024px) {
+    .title-part-description {
+        margin: 0 84px 0 84px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .lp-publication-card {
+        width: 80%;
+        margin-left: 10%;
+    }
+}

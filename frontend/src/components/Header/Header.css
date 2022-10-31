@@ -48,3 +48,15 @@
     width: 30%;
     margin-right: -4%;
 }
+
+@media only screen and (min-width: 321px) and (max-device-width: 1024px) {
+    .lmj-header {
+        height: 60px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .lmj-header {
+        height: 60px;
+    }
+}

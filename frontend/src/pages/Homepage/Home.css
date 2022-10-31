@@ -49,11 +49,18 @@
 
 .wall-part {
     display: flex;
-    margin: 8% 10% 0 10%;
+    margin-left: 6%;
+    margin-top: 4%;
+}
+
+.wall-part-first-part {
+    display: flex;
+    margin-left: 6%;
+    margin-top: 4%;
 }
 
 .filter-bar {
-    width: 26%;
+    margin-left: 0px;
 }
 
 .filter-bar-category-name {
@@ -123,4 +130,102 @@
     font-size: 12px;
     height: 28px;
     margin-top: 5%;
+}
+
+.share-post-button-fb {
+    text-decoration: none;
+    background-color: #f72000;
+    color: white;
+    border: #f72000;
+    border-radius: 32px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 12px;
+    height: 28px;
+    margin-top: 5%;
+}
+
+@media only screen and (min-width: 441px) and (max-device-width: 1024px) {
+    .title-part-description {
+        margin: 0 84px 0 84px;
+    }
+    .post {
+        display: flex;
+        flex-direction: column;
+        margin: 8% 10% 0 10%;
+    }
+    .wall-part {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 8% 10% 0 10%;
+    }
+    .wall-part-first-part {
+        flex-direction: column;
+    }
+    .filter-bar-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 25%;
+    }
+    .share-post-button-fb {
+        width: 70%;
+        margin-bottom: 20%;
+        margin-left: 40%;
+    }
+    .share-post-button {
+        width: 100px;
+        height: 44px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .Hero {
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+        margin: 3% -7px 0px 0px;
+    }
+    .image-section {
+        margin: 1% 24px 1% 5%;
+        width: 90%;
+        height: 124px;
+        border-radius: 1%;
+    }
+    .Hero-text-part-title {
+        font-size: 18px;
+        width: fit-content;
+    }
+    .part-two-description {
+        width: fit-content;
+    }
+    .title-part-description {
+        margin: 0 42px 0 42px;
+    }
+    .wall-part {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 8% 10% 0 10%;
+    }
+    .wall-part-first-part {
+        flex-direction: column;
+    }
+    .filter-bar {
+        margin-bottom: 6%;
+    }
+    .filter-bar-card-new-post {
+        width: 300px;
+        justify-content: center;
+    }
+    .filter-bar-card {
+        width: 300px;
+        justify-content: center;
+    }
+    .share-post-button-fb {
+        margin-bottom: 15%;
+        margin-left: 32%;
+    }
 }
