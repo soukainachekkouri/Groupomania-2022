@@ -2,6 +2,7 @@ const Post = require("../models/Post");
 const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
+    console.log("creation");
     let posts = {
         message: req.body.description,
         userId: req.body.userId,
@@ -94,6 +95,7 @@ exports.deleteOnePost = (req, res, next) => {
 };
 
 exports.like = (req, res, next) => {
+    console.log("like");
     Post.findOne({ _id: req.params.id }).then((post) => {
         if (req.body.like === 1) {
             //= je like

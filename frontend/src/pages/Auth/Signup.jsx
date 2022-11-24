@@ -2,9 +2,11 @@ import "../Auth/Login.css";
 import loginImage from "../Auth/assets/login-photo.jpg";
 import React, { useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
+import { useNavigate } from "react-router";
 
 function SignUp() {
   const [signup, setSignup] = useState({ name: "", email: "", password: "" });
+  const navigate = useNavigate();
   // fonction déclenché quand je modifie le champs email
   const handleChange = (e) => {
     if (e.target.id === "name") {
@@ -39,7 +41,7 @@ function SignUp() {
       .then((data) => {
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
-        window.open("/");
+        navigate("/");
         setSignup({
           name: "Wattson",
           email: "wattson@groupomania.com",
@@ -107,13 +109,6 @@ function SignUp() {
           </div>
           <MyButton title="Créer mon compte"></MyButton>
         </form>
-      </div>{" "}
-      <div className="auth-image-section">
-        <img
-          src={loginImage}
-          alt="login-image"
-          className="login-image-section"
-        />
       </div>{" "}
     </div>
   );

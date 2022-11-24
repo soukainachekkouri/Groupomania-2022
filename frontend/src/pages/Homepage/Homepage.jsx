@@ -12,12 +12,20 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Homepage = () => {
   const [data, setPosts] = useState([]);
+  const token = window.localStorage.getItem("token");
   useEffect(() => {
-    fetch("http://localhost:3000/api/post/")
-      .then((response) => response.json())
+    fetch("http://localhost:3000/api/post/", {
+      headers: {
+        Authorization: "bearer " + token,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
       .then((datas) => {
         console.log(datas);
-        setPosts(...data, datas);
+        setPosts(datas);
       })
       .catch((error) => console.log(error));
   }, []);

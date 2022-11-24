@@ -2,7 +2,7 @@ import "../PublicationPage/publicationPage.css";
 import React, { useEffect, useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
 import LastPublication from "../../components/lastPublications/lastPost";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const PublicationPage = (props) => {
   const [state, setState] = useState({
@@ -13,6 +13,7 @@ const PublicationPage = (props) => {
   });
   const [save, isSave] = useState(true);
   const token = window.localStorage.getItem("token");
+  const navigate = useNavigate();
 
   //je créer la fonction handlechange pour la description
   const handleChange = (e) => {
@@ -112,9 +113,7 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
-          window.localStorage.setItem("token", data.token);
-          window.localStorage.setItem("userId", data.userId);
-          window.open("/");
+          navigate("/");
         })
 
         .catch((e) => {

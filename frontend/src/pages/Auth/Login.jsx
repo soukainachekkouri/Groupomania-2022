@@ -2,9 +2,11 @@ import "../Auth/Login.css";
 import loginImage from "../Auth/assets/login-photo.jpg";
 import React, { useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
+import { useNavigate } from "react-router";
 
 function Login() {
   const [login, setLogin] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
   // fonction déclenché quand je modifie le champs email
   const handleChange = (e) => {
     if (e.target.id === "email") {
@@ -34,7 +36,7 @@ function Login() {
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
         window.localStorage.setItem("isAdmin", data.isAdmin);
-        window.open("/");
+        navigate("/");
       })
 
       .catch((error) => {

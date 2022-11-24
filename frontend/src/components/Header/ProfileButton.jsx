@@ -1,7 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "../Header/ProfileButton.css";
 import avatar from "../Header/assets/avatar.png";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +14,11 @@ const ProfileButton = () => {
     setOpen(!open);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/#/login";
+  };
+
   return (
     <div className="Dropdown-menu">
       <button onClick={handleOpen} className="dropdown-button">
@@ -24,13 +28,7 @@ const ProfileButton = () => {
       {open ? (
         <ul className="menu">
           <li className="menu-item">
-            <Link to="/profile">
-              <FontAwesomeIcon icon={faUser} />
-              Mon profil
-            </Link>
-          </li>
-          <li className="menu-item">
-            <button>
+            <button onClick={logout}>
               <FontAwesomeIcon icon={faArrowRightFromBracket} />
               Déconnexion
             </button>

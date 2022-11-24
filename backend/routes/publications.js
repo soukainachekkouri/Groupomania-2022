@@ -5,10 +5,10 @@ const multer = require("./../middleware/multer-config");
 const stuffCtrl = require("./../controllers/publication");
 
 router.post("/", auth, multer, stuffCtrl.createPost);
-router.get("/", stuffCtrl.findPosts);
+router.get("/", auth, stuffCtrl.findPosts);
 router.get("/:id", auth, stuffCtrl.findOnePost);
 router.put("/:id", auth, multer, stuffCtrl.updateOnePost);
 router.delete("/:id", auth, stuffCtrl.deleteOnePost);
-router.post("/:id/like", auth, stuffCtrl.like);
+router.put("/:id/like", auth, stuffCtrl.like);
 
 module.exports = router;
