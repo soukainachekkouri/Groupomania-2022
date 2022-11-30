@@ -12,12 +12,21 @@ function PublicationCard(props) {
   const { post, handleDelete } = props;
   const userId = window.localStorage.getItem("userId");
   const isAdmin = JSON.parse(window.localStorage.getItem("isAdmin"));
+  const [numberLike, setNumberLike] = useState(post.likes);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/profile/" + post.userId)
       .then((response) => response.json())
       .then((datas) => {
         setUser(datas);
+        //ici je vérifie si le post est déjà liké ?
+        for (let id of post.usersLiked) {
+          if (id == userId) {
+            console.log(id);
+            setIsLiked(true);
+          }
+        }
       })
       .catch((error) => console.log(error));
   }, []);
@@ -48,6 +57,30 @@ function PublicationCard(props) {
       .catch((error) => console.log(error));
   };
 
+  const handleClick = (like) => {
+    const LikeCompteur = { like: like, userId: userId };
+    console.log(LikeCompteur);
+    fetch("http://localhost:3000/api/post/" + post._id + "/like", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(LikeCompteur),
+    })
+      .then((result) => result.json())
+      .then((dataResult) => {
+        setIsLiked(!isLiked);
+        if (like == 1) {
+          setNumberLike(post.likes + 1);
+        } else {
+          if (numberLike > 0) {
+            setNumberLike(post.likes - 1);
+          }
+        }
+      })
+      .catch((error) => console.log(error));
+  };
   /*const like = document.getElementById("like-and-comment");
     const compteurLike = document.getElementById("compteur-clic");
     if (like) {
@@ -58,6 +91,8 @@ function PublicationCard(props) {
       };
     } else {
     }*/
+
+  console.log(isLiked);
   return (
     <>
       <div className="publication-card">
@@ -65,8 +100,19 @@ function PublicationCard(props) {
           <div className="reaction">
             <img src={avatar} alt="My-avatar" className="publication-avatar" />
             <div className="like-and-comment">
-              <FontAwesomeIcon icon={faHeart} className="reaction-icon-like" />
-              <p className="compteur-clic">0</p>
+              {isLiked ? (
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className="reaction-icon-like"
+                  onClick={() => handleClick(0)}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  onClick={() => handleClick(1)}
+                />
+              )}
+              <p className="compteur-clic">{numberLike}</p>
             </div>
           </div>
         </div>

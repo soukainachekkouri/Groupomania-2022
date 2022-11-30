@@ -95,9 +95,10 @@ exports.deleteOnePost = (req, res, next) => {
 };
 
 exports.like = (req, res, next) => {
-    console.log("like");
+    console.log(req.params.id);
+    console.log(JSON.parse(req.body.like));
     Post.findOne({ _id: req.params.id }).then((post) => {
-        if (req.body.like === 1) {
+        if (req.body.like == 1) {
             //= je like
             // je vérifie que l'utilisateur n'a pas déjà liké
             let index = post.usersLiked.indexOf(req.body.userId);
@@ -106,7 +107,7 @@ exports.like = (req, res, next) => {
                 post.likes++;
                 post.usersLiked.push(req.body.userId);
             }
-        } else if (req.body.like === 0) {
+        } else if (req.body.like == 0) {
             //id présente = on annule le like
             let index = post.usersLiked.indexOf(req.body.userId);
             if (index > -1) {
@@ -135,7 +136,10 @@ exports.like = (req, res, next) => {
         }
 
         Post.updateOne({ _id: req.params.id }, post)
-            .then(() => res.status(201).json({ message: "Objet modifié" }))
+            .then(function(post) {
+                console.log(post);
+                res.status(201).json({ message: "Objet modifié" });
+            })
             .catch((error) => res.status(500).json({ error }));
     });
 };
