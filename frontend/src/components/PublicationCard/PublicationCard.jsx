@@ -72,10 +72,10 @@ function PublicationCard(props) {
       .then((dataResult) => {
         setIsLiked(!isLiked);
         if (like == 1) {
-          setNumberLike(post.likes + 1);
+          setNumberLike(numberLike + 1);
         } else {
           if (numberLike > 0) {
-            setNumberLike(post.likes - 1);
+            setNumberLike(numberLike - 1);
           }
         }
       })
