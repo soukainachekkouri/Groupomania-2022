@@ -8,7 +8,7 @@ import ProfileButton from "./ProfileButton";
 function Header() {
   return (
     <div className="lmj-header" id="navbarLogged">
-      <Link to="/" className="lmj-logo">
+      <Link to="/home" className="lmj-logo">
         <img src={logo} alt="Gropomania" className="lmj-logo" />
       </Link>
       <h1 className="lmj-page-title"> Les posts </h1> <ProfileButton />

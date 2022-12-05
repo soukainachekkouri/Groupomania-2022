@@ -91,7 +91,7 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
-          window.open("/");
+          navigate("/home");
         })
 
         .catch((e) => {
@@ -113,7 +113,7 @@ const PublicationPage = (props) => {
 
         .then((data) => {
           console.log(data);
-          navigate("/");
+          navigate("/home");
         })
 
         .catch((e) => {

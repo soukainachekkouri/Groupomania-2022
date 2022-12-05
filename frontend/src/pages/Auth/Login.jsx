@@ -1,6 +1,6 @@
 import "../Auth/Login.css";
 import loginImage from "../Auth/assets/login-photo.jpg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyButton from "../../components/MyButton/MyButton";
 import { useNavigate } from "react-router";
 
@@ -36,7 +36,7 @@ function Login() {
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
         window.localStorage.setItem("isAdmin", data.isAdmin);
-        navigate("/");
+        navigate("/home");
       })
 
       .catch((error) => {

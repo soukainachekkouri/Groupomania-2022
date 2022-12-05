@@ -7,6 +7,7 @@ import Signup from "./pages/Auth/Signup";
 import Homepage from "./pages/Homepage/Homepage";
 import PublicationPage from "./pages/PublicationPage/publicationPage";
 import ProfilePage from "./pages/ProfilePage/profilePage";
+import { Navigate } from "react-router";
 //import Textholder from "./components/Textholder";
 
 function App() {
@@ -16,9 +17,9 @@ function App() {
       <div className="container-fluid">
         <Header />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Homepage />} />
           <Route path="/publication" element={<PublicationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/publication/:id" element={<PublicationPage />} />
