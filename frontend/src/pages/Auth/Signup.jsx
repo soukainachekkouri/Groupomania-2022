@@ -39,14 +39,16 @@ function SignUp() {
         }
       })
       .then((data) => {
+        console.log(data);
         window.localStorage.setItem("token", data.token);
         window.localStorage.setItem("userId", data.userId);
-        navigate("/");
+        window.localStorage.setItem("isAdmin", data.isAdmin);
         setSignup({
           name: "Wattson",
           email: "wattson@groupomania.com",
           password: "******",
         });
+        navigate("/login");
       })
 
       .catch((error) => {

@@ -28,7 +28,7 @@ const Homepage = () => {
         setPosts(datas);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [token]);
 
   const handleDelete = (post) => {
     setPosts(data.filter((element) => element._id !== post._id));
